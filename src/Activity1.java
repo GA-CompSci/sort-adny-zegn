@@ -3,6 +3,8 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         Activity1 bibbityboppity = new Activity1();
         bibbityboppity.buildList();
         bibbityboppity.printPretty();
+        bibbityboppity.shuffle();
+        bibbityboppity.printPretty();
     }
 
     @Override
@@ -17,19 +19,22 @@ public class Activity1 extends IntegerManager implements PrintPretty {
     @Override
     void shuffle() {
         // loop through all numbers and do a 3-part-swap
-        int temp;
+        for (int i = 0; i < nums.length; i++) {
+            int randIndex = (int)(Math.random() * nums.length);
+            int temp = nums[i];
+            nums[i] = nums[randIndex];
+            nums[randIndex] = temp;
+        }
     }
 
     @Override
     void insertionSort() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertionSort'");
+
     }
 
     @Override
     void selectionSort() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'selectionSort'");
+    
     }
 
     @Override
