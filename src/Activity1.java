@@ -1,10 +1,16 @@
 public class Activity1 extends IntegerManager implements PrintPretty {
     public static void main(String[] args) throws Exception {
-        Activity1 bibbityboppity = new Activity1();
-        bibbityboppity.buildList();
-        bibbityboppity.printPretty();
-        bibbityboppity.shuffle();
-        bibbityboppity.printPretty();
+        Activity1 bippityboppity = new Activity1();
+        bippityboppity.buildList();
+        bippityboppity.printPretty();
+        bippityboppity.shuffle();
+        bippityboppity.printPretty();
+        bippityboppity.selectionSort();;
+        bippityboppity.printPretty();
+        bippityboppity.shuffle();
+        bippityboppity.printPretty();
+        bippityboppity.selectionSort(true);;
+        bippityboppity.printPretty();
     }
 
     @Override
@@ -27,14 +33,44 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         }
     }
 
-    @Override
-    void insertionSort() {
-
+    void selectionSort(boolean highToLow) {
+        if (!highToLow) {
+            selectionSort();
+            return;
+        }
+        // outer loop  - iterate through n - 1
+        for (int outer = 0; outer < nums.length - 1; outer++) {
+            int largestIndex = outer;
+            // inner loop - find largest index
+            for (int inner = outer + 1; inner < nums.length; inner++) {
+                if (nums[inner] > nums[largestIndex]) largestIndex = inner;
+            }
+            // 3-part swap
+            int temp = nums[outer];
+            nums[outer] = nums[largestIndex];
+            nums[largestIndex] = temp;
+        }
     }
 
     @Override
     void selectionSort() {
+        // outer loop  - iterate through n - 1
+        for (int outer = 0; outer < nums.length - 1; outer++) {
+            int smallestIndex = outer;
+            // inner loop - find smallest index
+            for (int inner = outer + 1; inner < nums.length; inner++) {
+                if (nums[inner] < nums[smallestIndex]) smallestIndex = inner;
+            }
+            // 3-part swap
+            int temp = nums[outer];
+            nums[outer] = nums[smallestIndex];
+            nums[smallestIndex] = temp;
+        }
+    }
     
+    @Override
+    void insertionSort() {
+
     }
 
     @Override
