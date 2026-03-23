@@ -5,11 +5,10 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         bippityboppity.printPretty();
         bippityboppity.shuffle();
         bippityboppity.printPretty();
-        bippityboppity.selectionSort();;
-        bippityboppity.printPretty();
-        bippityboppity.shuffle();
-        bippityboppity.printPretty();
-        bippityboppity.selectionSort(true);;
+        // bippityboppity.selectionSort();
+        // bippityboppity.selectionSort(true);
+        // bippityboppity.insertionSort();
+        bippityboppity.insertionSort(true);
         bippityboppity.printPretty();
     }
 
@@ -70,7 +69,35 @@ public class Activity1 extends IntegerManager implements PrintPretty {
     
     @Override
     void insertionSort() {
+        // outer loop
+        for (int outer = 1; outer < nums.length; outer++) {
+            int inner = outer - 1;
+            int temp = nums[outer];
+            // inner while loop
+            while (inner > -1 && nums[inner] > temp) {
+                nums[inner + 1] = nums[inner];
+                inner--;
+            }
+            nums[inner + 1] = temp;
+        }
+    }
 
+    void insertionSort(boolean highToLow) {
+        if (!highToLow) {
+            insertionSort();
+            return;
+        }
+        // outer loop
+        for (int outer = 1; outer < nums.length; outer++) {
+            int inner = outer - 1;
+            int temp = nums[outer];
+            // inner while loop
+            while (inner > -1 && nums[inner] < temp) {
+                nums[inner + 1] = nums[inner];
+                inner--;
+            }
+            nums[inner + 1] = temp;
+        }
     }
 
     @Override
