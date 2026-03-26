@@ -7,8 +7,8 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         bippityboppity.printPretty();
         // bippityboppity.selectionSort();
         // bippityboppity.selectionSort(true);
-        // bippityboppity.insertionSort();
-        bippityboppity.insertionSort(true);
+        bippityboppity.insertionSort();
+        // bippityboppity.insertionSort(true);
         bippityboppity.printPretty();
     }
 
@@ -79,6 +79,8 @@ public class Activity1 extends IntegerManager implements PrintPretty {
                 inner--;
             }
             nums[inner + 1] = temp;
+            System.out.println("\nInsertion sort iteration number " + (outer - 1) + ":");
+            printPretty();;
         }
     }
 
@@ -130,11 +132,11 @@ public class Activity1 extends IntegerManager implements PrintPretty {
 
     @Override
     public void printPretty() {
-        System.out.println("\n----- Printing array of size " + nums.length + ": -----");
+        System.out.println("----- Printing array of size " + nums.length + ": -----");
         System.out.print("{");
         for (int num : nums) {
             System.out.print(num + " ");
         }
-        System.out.print("}");
+        System.out.println("}");
     }
 }
