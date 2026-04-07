@@ -7,8 +7,9 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         bippityboppity.printPretty();
         // bippityboppity.selectionSort();
         // bippityboppity.selectionSort(true);
-        bippityboppity.insertionSort();
+        // bippityboppity.insertionSort();
         // bippityboppity.insertionSort(true);
+        bippityboppity.mergeSort(bippityboppity.nums);
         bippityboppity.printPretty();
     }
 
@@ -103,9 +104,44 @@ public class Activity1 extends IntegerManager implements PrintPretty {
     }
 
     @Override
-    void mergeSort() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mergeSort'");
+    void mergeSort(int[] nums) {
+        // n = amount of items in list
+        // base case:
+        if (nums.length <= 1) return;
+        //split
+        int mid = nums.length / 2;
+        int[] ell = new int[mid];
+        int[] are = new int[nums.length - mid];
+        for (int i = 0; i < mid; i++) {
+            ell[i] = nums[i];
+        }
+        for (int i = mid; i < nums.length; i++) {
+            are[i - mid] = nums[i];
+        }
+        mergeSort(ell);
+        mergeSort(are);
+
+        merge(nums, ell, are, mid, nums.length - mid);
+    }
+
+    void merge(int[] nums, int[] ell, int[] are, int left, int right) {
+        // counters: i = left, j = right, k = nums
+        int i = 0, j = 0, k = 0;
+        while (i < left && j < right) {
+            if (ell[i] <= are[j]) {
+                nums[k++] = ell[i++];
+            } else nums[k++] = are[j++];
+        }
+
+        // case: only left remaining
+        while (i < left) {
+            nums[k++] = ell[i++];
+        }
+
+        // case: only right remaining
+        while (j < right) {
+            nums[k++] = are[j++];
+        }
     }
 
     @Override

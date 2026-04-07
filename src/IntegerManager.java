@@ -17,7 +17,7 @@ abstract class IntegerManager {
     abstract void selectionSort();
 
     /** Sorts the list of integers using merge sort */
-    abstract void mergeSort();
+    abstract void mergeSort(int[] nums);
 
     /** Returns a random integer from the nums list */
     abstract int pickRandom();
